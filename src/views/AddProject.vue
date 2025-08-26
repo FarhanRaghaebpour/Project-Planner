@@ -18,7 +18,7 @@ export default {
     },
     methods:{
         handleSubmit(){
-          fetch('http://localhost:3000/projects')
+          fetch('db.json')
             .then(res => res.json())
             .then(projects => {
               let maxId = 0;
@@ -31,7 +31,7 @@ export default {
                 details: this.details,
                 complete: false
               }
-              fetch('http://localhost:3000/projects',{
+              fetch('db.json',{
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(project)

@@ -16,21 +16,19 @@ export default {
         return{
             title: '',
             details: '',
-            uri: 'http://localhost:3000/projects/' + this.id
+            
         }
     },
     mounted(){
-        fetch(this.uri)
-          .then(res => res.json())
-          .then(data => {
-           this.title = data.title
-           this.details = data.details
-          }).catch(err => console.log(err.message))
+       fetch('data.json')
+     .then(res => res.json())
+     .then(data => console.log(data))
+     .catch(err => console.error(err));
         
     },
     methods:{
         handleSubmit(){
-            fetch(this.uri, {
+            fetch('db.json', {
                 method: 'PATCH',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({

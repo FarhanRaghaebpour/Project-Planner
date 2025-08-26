@@ -22,17 +22,17 @@ export default {
     data(){
       return{
         showDetails: false,
-        uri: 'http://localhost:3000/projects/' + this.project.id
+
       }
     },
     methods:{
       deleteProject(){
-        fetch(this.uri, {method: 'DELETE'})
+        fetch('db.json', {method: 'DELETE'})
         .then(() => this.$emit('delete', this.project.id))
         .catch(err => console.log(err.message))
       },
       changeComplete(){
-        fetch(this.uri, {
+        fetch('db.json', {
           method: 'PATCH',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({complete: !this.project.complete})

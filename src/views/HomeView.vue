@@ -25,10 +25,10 @@ export default {
     }
   },
   mounted(){
-    fetch('http://localhost:3000/projects')
-    .then(res => res.json())
-    .then(data => this.projects = data)
-    .catch(err => console.log(err.message))
+  fetch(`${process.env.BASE_URL}db.json`)
+  .then(res => res.json())
+  .then(data => this.projects = data)
+  .catch(err => console.log(err.message))
   },
   methods: {
     handleDelete(id){
